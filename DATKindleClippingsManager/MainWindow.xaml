@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:DATKindleClippingsManager"
         mc:Ignorable="d"
         Title="DAT Kindle Clippings Manager" Height="718" Width="1238" FontSize="14">
-    <Grid Background="#131517">
+    <Grid Background="#131517" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="330"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -20,13 +20,13 @@
         <Grid Grid.ColumnSpan="2" Background="#101113">
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                 <Label VerticalAlignment="Center" Foreground="White">File</Label>
-                <TextBox VerticalAlignment="Center" Width="500" Height="30" Margin="5,5,10,5" IsReadOnly="True" Text="{Binding ClippingsFile}"></TextBox>
-                <Button  VerticalAlignment="Center" Command="{Binding SelectClippingsFileCommand}" Width="100" Height="30">Load</Button>
-                <Button  VerticalAlignment="Center" Command="{Binding LoadClippingsCommand}" Width="100" Height="30" Margin="5,0,0,0">Refresh</Button>
+                <TextBox VerticalAlignment="Center" Width="500" Height="25" Margin="5,5,10,5" IsReadOnly="True" Text="{Binding ClippingsFile}"></TextBox>
+                <Button  VerticalAlignment="Center" Command="{Binding SelectClippingsFileCommand}" Width="100" Height="25">Load</Button>
+                <Button  VerticalAlignment="Center" Command="{Binding LoadClippingsCommand}" Width="100" Height="25" Margin="5,0,0,0">Refresh</Button>
             </StackPanel>
         </Grid>
-        
-        <ListView ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Background="#101113">
+
+        <ListView ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Background="#101113" BorderBrush="#131517">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
                     <i:InvokeCommandAction Command="{Binding BookSelectedCommand}" PassEventArgsToCommand="True"/>
@@ -46,21 +46,22 @@
                             <ColumnDefinition Width="150"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-
                             <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <Image Margin="5,5,5,5" Grid.RowSpan="2" Stretch="Uniform" Height="150" Source="{Binding CoverLocation}" CacheMode="BitmapCache"></Image>
-                        <TextBlock Grid.Column="1" Grid.Row="0" FontStyle="Italic" FontWeight="DemiBold" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding Title}" Foreground="White"></TextBlock>
-                        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Foreground="White">
-                            <Run Text="by " />
-                            <Run FontStyle="Italic" Text="{Binding Author}" />
-                        </TextBlock>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock  FontStyle="Italic" FontWeight="DemiBold" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding Title}" Foreground="White"></TextBlock>
+                            <TextBlock HorizontalAlignment="Left" Foreground="White">
+                                <Run Text="by " />
+                                <Run FontStyle="Italic" Text="{Binding Author}" />
+                            </TextBlock>
+                        </StackPanel>
+                        
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ListView ItemsSource="{Binding FilteredClippings}" Grid.Column="1" Grid.Row="1" Background="#101113">
+        <ListView ItemsSource="{Binding FilteredClippings}" Grid.Column="1" Grid.Row="1" Background="#101113" BorderBrush="#131517">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -98,8 +99,8 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Left">
-            <Button Margin="5,5,5,0" Width="150" Height="35" Command="{Binding BackUpClippingsCommand}">Back up Clippings</Button>
-            <Button Margin="5,5,5,0" Width="150" Height="35" Command="{Binding OpenBackUpsCommand}">Show BackUps</Button>
+            <Button Margin="5,5,5,0" Width="150" Height="25" Command="{Binding BackUpClippingsCommand}">Back up Clippings</Button>
+            <Button Margin="5,5,5,0" Width="150" Height="25" Command="{Binding OpenBackUpsCommand}">Show BackUps</Button>
         </StackPanel>
         
     </Grid>

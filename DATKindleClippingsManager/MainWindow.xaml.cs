@@ -41,16 +41,19 @@ namespace DATKindleClippingsManager
 
 				Application.Current.Dispatcher.Invoke(() =>
 				{
-					Thread.Sleep(400);
-					DriveInfo[] allDrives = DriveInfo.GetDrives();
-					foreach (DriveInfo d in allDrives)
+					if (!Properties.Settings.Default.ClippingsLocation.Equals(""))
 					{
-						if (d.IsReady && d.Name == "G:\\")
+						Thread.Sleep(400);
+						DriveInfo[] allDrives = DriveInfo.GetDrives();
+						string drive = Properties.Settings.Default.ClippingsLocation.Substring(0, Properties.Settings.Default.ClippingsLocation.IndexOf(":"));
+						foreach (DriveInfo d in allDrives)
 						{
-							model.LoadClippings();
+							if (d.IsReady && d.Name == $"{drive}:\\")
+							{
+								model.LoadClippings();
+							}
 						}
 					}
-					
 				});
 					
 			};
