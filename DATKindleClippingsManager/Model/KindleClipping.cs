@@ -8,19 +8,15 @@ namespace DATKindleClippingsManager.Model
 {
 	public class KindleClipping
 	{
-		public String BookTitle { get; set; }
-		public String BookAuthor { get; set; }
-		public int PageLocation { get; set; }
-		public int StartingLocation { get; set; }
-		public int EndingLocation { get; set; }
+		public String Title { get; set; }
+		public String Author { get; set; }
+		public int Page { get; set; }
 		public DateTime DateAdded { get; set; }
-		public String TextHighlighted { get; set; }
-		public String Note { get; set; }
-		public TypeOfClipping Type { get; set; }
-		public enum TypeOfClipping
+		public String Text { get; set; }
+
+		public KindleClipping()
 		{
-			Highlight,
-			Note
+			this.Text = "";
 		}
 	}
 }

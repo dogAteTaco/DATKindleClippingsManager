@@ -60,5 +60,10 @@ namespace DATKindleClippingsManager
 			watcher.Query = query;
 			watcher.Start();
 		}
+
+		private void NoteTextChanged(object sender, TextChangedEventArgs e)
+		{
+			model.Changes = true;
+		}
 	}
 }

@@ -6,10 +6,29 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Kindle Paperwhite_Hill_0.ico</ApplicationIcon>
+    <Title>DAT Kindle Clipplings Manager</Title>
+    <SignAssembly>False</SignAssembly>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\cross-icon.png" />
+    <None Remove="Resources\download.png" />
+    <None Remove="Resources\folder-backup.png" />
+    <None Remove="Resources\open.png" />
+    <None Remove="Resources\refresh.png" />
+    <None Remove="Resources\tick-green-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Kindle Paperwhite_Hill_0.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -21,23 +40,24 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
+    <Resource Include="Resources\cross-icon.png" />
+    <Resource Include="Resources\download.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\folder-backup.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\open.png" />
+    <Resource Include="Resources\refresh.png" />
+    <Resource Include="Resources\tick-green-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

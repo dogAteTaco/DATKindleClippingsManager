@@ -6,7 +6,7 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:DATKindleClippingsManager"
         mc:Ignorable="d"
-        Title="DAT Kindle Clippings Manager" Height="718" Width="1238" FontSize="14">
+        Title="DAT Kindle Clippings Manager" Height="720" Width="1280" FontSize="14">
     <Grid Background="#131517" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="330"></ColumnDefinition>
@@ -21,8 +21,18 @@
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                 <Label VerticalAlignment="Center" Foreground="White">File</Label>
                 <TextBox VerticalAlignment="Center" Width="500" Height="25" Margin="5,5,10,5" IsReadOnly="True" Text="{Binding ClippingsFile}"></TextBox>
-                <Button  VerticalAlignment="Center" Command="{Binding SelectClippingsFileCommand}" Width="100" Height="25">Load</Button>
-                <Button  VerticalAlignment="Center" Command="{Binding LoadClippingsCommand}" Width="100" Height="25" Margin="5,0,0,0">Refresh</Button>
+                <Button  VerticalAlignment="Center" Width="50" Height="30" Background="Transparent" BorderThickness="0" Command="{Binding SelectClippingsFileCommand}">
+                    <Image Source="pack://application:,,,/Resources/open.png"></Image>
+                    <Button.ToolTip>
+                        Select the location of your Clippings file on your Kindle.
+                    </Button.ToolTip>
+                </Button>
+                <Button  VerticalAlignment="Center" Width="50" Height="30" Background="Transparent" BorderThickness="0" Command="{Binding LoadClippingsCommand}" Margin="5,0,0,0">
+                    <Image Source="pack://application:,,,/Resources/refresh.png"></Image>
+                    <Button.ToolTip>
+                        Refresh Clippings from your Kindle.
+                    </Button.ToolTip>
+                </Button>
             </StackPanel>
         </Grid>
 
@@ -70,15 +80,15 @@
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="150"></ColumnDefinition>
-                            <ColumnDefinition Width="300"></ColumnDefinition>
-                            <ColumnDefinition Width="300"></ColumnDefinition>
+                            <ColumnDefinition Width="350"></ColumnDefinition>
+                            <ColumnDefinition Width="350"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <StackPanel>
-                            <TextBlock Height="20" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White">
+                        <StackPanel Width="700">
+                            <TextBlock Height="20" Grid.Row="0" Width="350" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White">
                                 <Run FontWeight="DemiBold" Text="Page: " />
-                                <Run Text="{Binding PageLocation}" />
+                                <Run Text="{Binding Page}" />
                             </TextBlock>
-                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White">
+                            <TextBlock HorizontalAlignment="Left" Width="350" VerticalAlignment="Top" Foreground="White">
                                 <Run FontWeight="DemiBold" Text="Location: " />
                                 <Run Text="{Binding StartingLocation}" />
                                 <Run Text="-"/>
@@ -88,19 +98,32 @@
                         
 
                         <TextBox Grid.Column="1" Grid.RowSpan="2" FontStyle="Italic" 
-                                 TextWrapping="Wrap" Width="250" MinHeight="100" IsReadOnly="True" 
-                                 Text="{Binding TextHighlighted}" Background="#131517" BorderBrush="#131517" 
+                                 TextWrapping="Wrap" Width="350" MinHeight="100" IsReadOnly="True" 
+                                 Text="{Binding Text}" Background="#131517" BorderBrush="#131517" 
                                  Foreground="White" Margin="3,3,3,3"/>
-                        <TextBox Grid.Column="2" Grid.RowSpan="2" TextWrapping="Wrap" Width="250" MinHeight="100" 
-                                 Text="{Binding Note}" Background="#131517" Foreground="White" BorderBrush="#131517"
-                                 Margin="3,3,3,3"/>
+                        <TextBox Grid.Column="2" Grid.RowSpan="2" TextWrapping="Wrap" Width="350" MinHeight="100" IsReadOnly="True"
+                                 Text="{Binding Note.Text}" Background="#131517" Foreground="White" BorderBrush="#131517"
+                                 Margin="3,3,3,3" TextChanged="NoteTextChanged"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Left">
-            <Button Margin="5,5,5,0" Width="150" Height="25" Command="{Binding BackUpClippingsCommand}">Back up Clippings</Button>
-            <Button Margin="5,5,5,0" Width="150" Height="25" Command="{Binding OpenBackUpsCommand}">Show BackUps</Button>
+            <Button Margin="5,5,5,0" Width="50" Height="35" Background="Transparent" BorderThickness="0" Command="{Binding BackUpClippingsCommand}">
+                <Image Source="pack://application:,,,/Resources/download.png"></Image>
+                <Button.ToolTip>
+                    BackUp your Clippings from your Kindle device.
+                </Button.ToolTip>
+            </Button>
+            <Button Margin="5,5,5,0" Width="50" Height="35" Background="Transparent" BorderThickness="0" Command="{Binding OpenBackUpsCommand}">
+                <Image Source="pack://application:,,,/Resources/folder-backup.png"></Image>
+                <Button.ToolTip>
+                    Open BackUp Folder in your computer.
+                </Button.ToolTip>
+            </Button>
+            <Button Visibility="Hidden" HorizontalAlignment="Right" Margin="5,5,5,0" Width="50" Height="35" Background="Transparent" BorderThickness="0" Command="{Binding SaveClippingsCommand}">
+                <Image Source="pack://application:,,,/Resources/tick-green-icon.png"></Image>
+            </Button>
         </StackPanel>
         
     </Grid>
